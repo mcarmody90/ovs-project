@@ -34,11 +34,11 @@ export class Navbar extends Component {
               ))
             }
           </div>
-          <button onClick={this.onDateChange}>3M</button>
-          <button onClick={this.onDateChange}>6M</button>
-          <button onClick={this.onDateChange}>1Y</button>
-          <button onClick={this.onDateChange}>3Y</button>
-          <button onClick={this.onDateChange}>5Y</button>
+          <button className="btn" onClick={this.onDateChange}>3M</button>
+          <button className="btn" onClick={this.onDateChange}>6M</button>
+          <button className="btn" onClick={this.onDateChange}>1Y</button>
+          <button className="btn" onClick={this.onDateChange}>3Y</button>
+          <button className="btn" onClick={this.onDateChange}>5Y</button>
         </div>
       </div>
     )
