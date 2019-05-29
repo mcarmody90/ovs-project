@@ -6,6 +6,7 @@ import HighchartsReact from 'highcharts-react-official';
 export class Chart extends Component {
   state = {
     WellID: this.props.WellID,
+    dateRange: 365,
     oil: [],
     water: [],
     gas: []
@@ -21,9 +22,20 @@ export class Chart extends Component {
         water: res.data.map(a => a.Water),
         gas: res.data.map(a => a.Gas)
       }))
+    } else if(this.props.dateRange !== prevProps.dateRange){
+      this.setState({
+        dateRange: this.props.dateRange
+      })
+      axios.get(`http://localhost:3000/Daily_Prod?WellID=${this.props.WellID}&_limit=${this.props.dateRange}`, false)
+      .then(res => this.setState({
+        oil: res.data.map(a => a.Oil),
+        water: res.data.map(a => a.Water),
+        gas: res.data.map(a => a.Gas)
+      }))
     }
   }
   render() {
+    console.log(this.props.dateRange)
     const oil = this.state.oil.map(function (x) {
       return parseFloat(x);
     });
@@ -33,9 +45,9 @@ export class Chart extends Component {
     const gas = this.state.gas.map(function (x) {
       return parseFloat(x);
     })
-    const last_oil_element = oil[oil.length - 1];
-    const last_water_element = water[water.length - 1];
-    const last_gas_element = gas[gas.length - 1];
+    const last_oil_element = oil[0];
+    const last_water_element = water[0];
+    const last_gas_element = gas[0];
     return (
       <div>
         <div className="main_chart border">
@@ -64,6 +76,11 @@ export class Chart extends Component {
                   data: gas
                 }
               ],
+              xAxis: [
+                {
+                  reversed: true
+                }
+              ],
               yAxis: [
                 {
                   lineWidth: 1,
@@ -78,7 +95,14 @@ export class Chart extends Component {
                     text: 'Water Rate'
                   }
                 }
-              ]
+              ],
+              plotOptions: {
+                series: {
+                  marker: {
+                    enabled: false
+                  }
+                }
+              }
             }}
           />
         </div>

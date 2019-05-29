@@ -3,7 +3,8 @@ import master from '../data/master';
 
 export class Navbar extends Component {
   state = {
-    WellID: 'Select a well'
+    WellID: 'Select a well',
+    dateRange: 365
   }
   getText = (e) => {
     const WellID = e.target.innerHTML;
@@ -11,6 +12,13 @@ export class Navbar extends Component {
       WellID
     });
     this.props.wellChange(WellID);
+  }
+  onDateChange = (e) => {
+    const dateRange = e.target.innerHTML;
+    this.setState({
+      dateRange
+    });
+    this.props.dateChange(dateRange);
   }
   render() {
     return (
@@ -26,6 +34,11 @@ export class Navbar extends Component {
               ))
             }
           </div>
+          <button onClick={this.onDateChange}>3M</button>
+          <button onClick={this.onDateChange}>6M</button>
+          <button onClick={this.onDateChange}>1Y</button>
+          <button onClick={this.onDateChange}>3Y</button>
+          <button onClick={this.onDateChange}>5Y</button>
         </div>
       </div>
     )

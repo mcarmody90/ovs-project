@@ -21,9 +21,8 @@ export class WellInfo extends Component {
     return (
       this.state.WellID.length > 0 ? (
         (
-          <div>
+          <div className="text-left">
             <h1>{this.props.WellID}</h1>
-            <h4>Property: {this.state.well[0].value}</h4>
             <h4>Area: {this.state.well[0].Area}</h4>
             <h4>SubArea: {this.state.well[0].SubArea}</h4>
             <h4>County: {this.state.well[0].County}</h4>
