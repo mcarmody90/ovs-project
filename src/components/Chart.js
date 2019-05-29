@@ -36,9 +36,6 @@ export class Chart extends Component {
     const last_oil_element = oil[oil.length - 1];
     const last_water_element = water[water.length - 1];
     const last_gas_element = gas[gas.length - 1];
-    console.log('last gas:',last_gas_element);
-    console.log('last oil:',last_oil_element);
-    console.log('last water:',last_water_element);
     return (
       <div>
         <div className="main_chart border">
@@ -87,13 +84,16 @@ export class Chart extends Component {
         </div>
         <div className="row border sub_chart--container">
           <div className="sub_chart border">
-            <h1>{last_gas_element}</h1>
+            <h1>Gas Rate</h1>
+            <h5>{last_gas_element}</h5>
           </div>
           <div className="sub_chart border">
-            <h1>{last_water_element}</h1>
+            <h1>Water Rate</h1>
+            <h5>{last_water_element}</h5>
           </div>
           <div className="sub_chart border">
-            <h1>{last_oil_element}</h1>
+            <h1>Oil Rate</h1>
+            <h5>{last_oil_element}</h5>
           </div>
         </div>
       </div>

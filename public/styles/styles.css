@@ -3,6 +3,10 @@
   min-height: 50px;
 }
 
+.well-btn {
+  border-radius: 0;
+}
+
 .sub_chart--container {
   display: flex;
   justify-content: space-around;

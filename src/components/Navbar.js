@@ -16,7 +16,7 @@ export class Navbar extends Component {
     return (
       <div className="navbar_component">
         <div className="dropdown">
-          <button className="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
+          <button className="well-btn btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
             {this.state.WellID}
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
