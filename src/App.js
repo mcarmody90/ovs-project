@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
+import WellInfo from './components/WellInfo';
+import Navbar from './components/Navbar';
+import Chart from './components/Chart';
+import Todo from './components/Todo';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    WellID: ''
+  }
+  wellChange = (WellID) => {
+    this.setState({
+      WellID
+    })
+    console.log(WellID);
+  }
+  render() {
+    return (
+      <div className="App">
+        <Navbar wellChange={this.wellChange} />
+        <div className="row">
+          <div className="col-lg-2 border">
+            <WellInfo WellID={this.state.WellID} />
+          </div>
+          <div className="col-lg-8 border">
+          <Chart WellID={this.state.WellID} />
+          </div>
+          <div className="col-lg-2 border">
+          <Todo />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
