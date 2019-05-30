@@ -24,26 +24,120 @@ export class WellInfo extends Component {
     }
   }
   render() {
-    console.log(this.state);
     return (
       this.state.WellID.length > 0 ? (
         (
-          <div className="well-info text-left">
+          <div className="well-info text-center">
             <div>
-              <h1 className="text-center">{this.props.WellID}</h1>
+              <h1>{this.props.WellID}</h1>
               <hr />
-              <h5>Area: {this.state.well[0].Area}</h5>
-              <h5>SubArea: {this.state.well[0].SubArea}</h5>
-              <h5>County: {this.state.well[0].County}</h5>
-              <h5>State: {this.state.well[0].State}</h5>
-              <h5>Operator: {this.state.well[0].Operator}</h5>
-              <h5>Lease: {this.state.well[0].Lease}</h5>
-              <h5>First Production: {this.state.alarms.DateOriginal}</h5>
+              <table className="table table-striped table-sm text-left mb-0">
+                <tbody>
+                  <tr>
+                    <th scope="row">Area</th>
+                    <td>{this.state.well[0].Area}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SubArea</th>
+                    <td>{this.state.well[0].SubArea}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">County</th>
+                    <td>{this.state.well[0].County}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">State</th>
+                    <td>{this.state.well[0].State}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Operator</th>
+                    <td>{this.state.well[0].Operator}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Lease</th>
+                    <td>{this.state.well[0].Lease}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">First Production</th>
+                    <td>{this.state.alarms.DateOriginal}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button type="button" className="btn btn-secondary btn-sm btn-block mt-0 mb-3" data-toggle="modal" data-target="#wellInfoModal">More</button>
+            
+              <div className="modal fade" id="wellInfoModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered" role="document">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                      <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div className="modal-body">
+                      <h1 className="text-center">{this.props.WellID}</h1>
+                      <table className="table table-striped table-sm">
+                        <tbody>
+                          <tr>
+                            <th scope="row">Well</th>
+                            <td>{this.state.well[0].Well}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Name</th>
+                            <td>{this.state.well[0].Name}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">CompDate</th>
+                            <td>{this.state.well[0].CompDate}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">KBE</th>
+                            <td>{this.state.well[0].KBE}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">TD</th>
+                            <td>{this.state.well[0].TD}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Reservoir</th>
+                            <td>{this.state.well[0].Reservoir}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">PVTRegion</th>
+                            <td>{this.state.well[0].PVTRegion}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Category</th>
+                            <td>{this.state.well[0].Category}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">FlowStation</th>
+                            <td>{this.state.well[0].FlowStation}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Function</th>
+                            <td>{this.state.well[0].Function}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Method</th>
+                            <td>{this.state.well[0].Method}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
             <div>
-              <h1 className="text-center">Alarms</h1>
+              <h1>Alarms</h1>
               <hr />
               <h5>GOR: {this.state.alarms.GOR}</h5>
+              <h5>Oil Rate: {this.state.alarms['Oil Rate']}</h5>
             </div>
           </div>
         )

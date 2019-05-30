@@ -21,13 +21,14 @@ export class AddTodo extends Component {
           type="text"
           name="title"
           className="todo--input"
-          placeholder="Add Todo..."
+          placeholder=" Add task..."
           value={this.state.title}
           onChange={this.onChange}
         />
         <input 
           type="submit"
           value="Submit"
+          style={{ display: 'block' }}
           className="btn todo--submit"
         />
       </form>

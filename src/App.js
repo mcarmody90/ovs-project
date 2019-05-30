@@ -1,6 +1,7 @@
 import React from 'react';
 import WellInfo from './components/WellInfo';
 import Navbar from './components/Navbar';
+import moment from 'moment';
 import Chart from './components/Chart';
 import Todo from './components/Todo';
 import './App.css';
@@ -8,7 +9,9 @@ import './App.css';
 class App extends React.Component {
   state = {
     WellID: '',
-    dateRange: 365
+    dateRange: 365,
+    startDate: '',
+    endDate: ''
   }
   wellChange = (WellID) => {
     this.setState({
@@ -40,18 +43,38 @@ class App extends React.Component {
       dateRange
     })
   }
+  getStartDate = (startDate) => {
+    this.setState({
+      startDate: (moment(startDate).format("YYYY-DD-MM"))
+    })
+  }
+  getEndDate = (endDate) => {
+    this.setState({
+      endDate: (moment(endDate).format("YYYY-DD-MM"))
+    })
+  }
   render() {
     return (
       <div className="App">
-        <Navbar wellChange={this.wellChange} dateChange={this.dateChange} />
+        <Navbar 
+          wellChange={this.wellChange} 
+          dateChange={this.dateChange} 
+          getStartDate={this.getStartDate} 
+          getEndDate={this.getEndDate}
+        />
         <div className="row">
-          <div className="col-lg-2 border">
+          <div className="col-xl-2 col-lg-3">
             <WellInfo WellID={this.state.WellID} />
           </div>
-          <div className="col-lg-8 border">
-          <Chart WellID={this.state.WellID} dateRange={this.state.dateRange} />
+          <div className="col-xl-8 col-lg-6 chart-container">
+          <Chart 
+            WellID={this.state.WellID} 
+            dateRange={this.state.dateRange}
+            startDate={this.state.startDate}
+            endDate={this.state.endDate}
+          />
           </div>
-          <div className="col-lg-2 col-md-12 border">
+          <div className="col-xl-2 col-lg-3 col-md-12">
           <Todo />
           </div>
         </div>
