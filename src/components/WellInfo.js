@@ -23,15 +23,21 @@ export class WellInfo extends Component {
       }))
     }
   }
+  getGORStatus = () => {
+    return { color: this.state.alarms.GOR === '' ? 'red' : 'green' }
+  }
+  getOilRateStatus = () => {
+    return { color: this.state.alarms['Oil Rate'] > 0 ? 'red' : 'green' }
+  }
   render() {
     return (
       this.state.WellID.length > 0 ? (
         (
-          <div className="well-info text-center">
+          <div className="well-info">
             <div>
               <h1>{this.props.WellID}</h1>
               <hr />
-              <table className="table table-striped table-sm text-left mb-0">
+              <table className="table table-striped table-bordered table-sm text-left">
                 <tbody>
                   <tr>
                     <th scope="row">Area</th>
@@ -63,10 +69,11 @@ export class WellInfo extends Component {
                   </tr>
                 </tbody>
               </table>
-              <button type="button" className="btn btn-secondary btn-sm btn-block mt-0 mb-3" data-toggle="modal" data-target="#wellInfoModal">More</button>
+              
+              <button type="button" className="btn btn-secondary btn-sm btn-block mt-0 mb-3" data-toggle="modal" data-target=".bd-example-modal-lg">More</button>
             
-              <div className="modal fade" id="wellInfoModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div className="modal-dialog modal-dialog-centered" role="document">
+              <div className="modal fade bd-example-modal-lg" id="wellInfoModal" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
                   <div className="modal-content">
                     <div className="modal-header">
                       <h5 className="modal-title" id="exampleModalLongTitle">Modal title</h5>
@@ -76,7 +83,7 @@ export class WellInfo extends Component {
                     </div>
                     <div className="modal-body">
                       <h1 className="text-center">{this.props.WellID}</h1>
-                      <table className="table table-striped table-sm">
+                      <table className="modal-table table-bordered table-striped table-sm">
                         <tbody>
                           <tr>
                             <th scope="row">Well</th>
@@ -124,6 +131,20 @@ export class WellInfo extends Component {
                           </tr>
                         </tbody>
                       </table>
+                      <h1>Events</h1>
+                      <hr />
+                      <table className="table table-striped table-bordered table-sm text-left">
+                        <tbody>
+                          {
+                            this.props.events.map((event) => (
+                              <tr key={event.Date}>
+                                <th>{event.Date}</th>
+                                <td>{event.REMARKS}</td>
+                              </tr>
+                            ))
+                          }
+                        </tbody>
+                      </table>
                     </div>
                     <div className="modal-footer">
                       <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -136,13 +157,13 @@ export class WellInfo extends Component {
             <div>
               <h1>Alarms</h1>
               <hr />
-              <h5>GOR: {this.state.alarms.GOR}</h5>
-              <h5>Oil Rate: {this.state.alarms['Oil Rate']}</h5>
+              <h5>GOR <i className="material-icons float-right" style={this.getGORStatus()}>radio_button_checked</i></h5>
+              <h5>Oil Rate <i className="material-icons float-right" style={this.getOilRateStatus()}>radio_button_checked</i></h5>
             </div>
           </div>
         )
       ) : (
-        <h1>No Well Selected</h1>
+        <div></div>
     )
     )
   }

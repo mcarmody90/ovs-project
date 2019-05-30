@@ -5,6 +5,12 @@ body {
 .ovs-logo {
   height: 50px;
   width: 50px;
+  border-radius: 50%;
+}
+
+.modal-table {
+  margin: 0 auto !important;
+  width: 100% !important;
 }
 
 .navbar-container {
@@ -54,7 +60,7 @@ body {
 }
 
 .main_chart {
-  padding-top: 25px;
+  padding-top: 5px;
 }
 
 .sub_chart--container {

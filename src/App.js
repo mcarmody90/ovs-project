@@ -11,7 +11,8 @@ class App extends React.Component {
     WellID: '',
     dateRange: 365,
     startDate: '',
-    endDate: ''
+    endDate: '',
+    events: []
   }
   wellChange = (WellID) => {
     this.setState({
@@ -53,6 +54,11 @@ class App extends React.Component {
       endDate: (moment(endDate).format("YYYY-DD-MM"))
     })
   }
+  getEvents = (events) => {
+    this.setState({
+      events
+    })
+  }
   render() {
     return (
       <div className="App">
@@ -64,7 +70,7 @@ class App extends React.Component {
         />
         <div className="row">
           <div className="col-xl-2 col-lg-3">
-            <WellInfo WellID={this.state.WellID} />
+            <WellInfo WellID={this.state.WellID} events={this.state.events} />
           </div>
           <div className="col-xl-8 col-lg-6 chart-container">
           <Chart 
@@ -72,6 +78,7 @@ class App extends React.Component {
             dateRange={this.state.dateRange}
             startDate={this.state.startDate}
             endDate={this.state.endDate}
+            getEvents={this.getEvents}
           />
           </div>
           <div className="col-xl-2 col-lg-3 col-md-12">

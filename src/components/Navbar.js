@@ -48,7 +48,7 @@ export class Navbar extends Component {
   render() {
     return (
       <div className="navbar_component navbar-container text-white">
-        <a className="navbar-brand" href="#"><img className="ovs-logo float-left" src="https://i.imgur.com/ow7oAOJ.png" /></a>
+        <a className="navbar-brand" href="http://ovsgroup.com/"><img className="ovs-logo float-left" src="https://i.imgur.com/ow7oAOJ.png" /></a>
         <div className="dropdown">
           <button className="well-button btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
             {this.state.WellID}
