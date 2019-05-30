@@ -51,7 +51,7 @@ class App extends React.Component {
           <div className="col-lg-8 border">
           <Chart WellID={this.state.WellID} dateRange={this.state.dateRange} />
           </div>
-          <div className="col-lg-2 border">
+          <div className="col-lg-2 col-md-12 border">
           <Todo />
           </div>
         </div>

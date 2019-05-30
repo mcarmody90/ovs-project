@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 .navbar_component {
   padding: 5px;
   min-height: 50px;
@@ -30,4 +34,31 @@
   .sub_chart {
     width: 100% !important;
   }
+}
+
+/* Todo component */
+.todo-btn {
+  float: right;
+  border-radius: 15%;
+  border: 1px solid grey;
+}
+
+.todo_item {
+  background: #f4f4f4;
+  display: block;
+  padding: 10px;
+  border-bottom: 1px #ccc dotted;
+}
+
+.todo--form {
+  display: flex;
+}
+
+.todo--submit {
+  flex: 1;
+}
+
+.todo--input {
+  flex: 10;
+  padding: 5px;
 }
