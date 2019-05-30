@@ -33,11 +33,12 @@ class App extends React.Component {
       case '5Y':
         dateRange = 1825;
         break;
+      default:
+        dateRange = 365;
     }
     this.setState({
       dateRange
     })
-    console.log(dateRange);
   }
   render() {
     return (

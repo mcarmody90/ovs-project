@@ -42,14 +42,33 @@ export class Chart extends Component {
     })
     const last_water_element = water[0];
     const last_gas_element = gas[0];
+    let isResetZoomButtonEnable= 'F';
     return (
       <div>
         <div className="main_chart border">
-          <h1>{this.props.WellID}</h1>
           <HighchartsReact
             highcharts={Highcharts}
             options={{
+              chart: {
+                renderTo: 'container',
+                defaultSeriesType: 'line',
+                 zoomType: 'xy',
+                margin: [50, 150, 60, 80],
+                events: 
+                {
+                  selection: function(event) 
+                  {
+                    if (! event.xAxis) 
+                    {
+                      isResetZoomButtonEnable='T';
+                    } 
+                  }
+                }
+            },
               title: {
+                style: {
+                  fontSize: '36px'
+                },
                 text: `${this.state.WellID} Daily Production`
               },
               credits: {
