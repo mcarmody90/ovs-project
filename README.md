@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+-----------------------------------------------------------------------------------------
+
+## To Start: 
+1. Run src/data/data.json on json-server in a terminal (`json-server --watch src/data/data.json`). Make sure it's running on port 3000. This behaves just like a back-end for retrieving data from an API.
+2. Run `npm start` in a second terminal and enjoy.
+
+-----------------------------------------------------------------------------------------
+
 ## Available Scripts
 
 In the project directory, you can run:
